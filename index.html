@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Ariana Grill — Grillades afghanes à Garges-lès-Gonesse</title>
+    <meta
+      name="description"
+      content="Restaurant afghan au Pont de Pierre. Kebabs au charbon, karhai, qabli palaw. 4,4/5 sur 631 avis Google."
+    />
+    <link rel="icon" href="public/favicon.svg" type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500;1,600&family=Outfit:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --bg: #12100e;
+        --surface: #1b1814;
+        --fg: #f1ebe3;
+        --muted: #b4a89a;
+        --subtle: #7d7468;
+        --accent: #c24a2e;
+        --accent-fg: #fff6f1;
+        --cream: #f1ebe3;
+        --ink: #12100e;
+        --border: #322c26;
+        --display: "Cormorant Garamond", Georgia, serif;
+        --sans: "Outfit", system-ui, sans-serif;
+      }
+      * { box-sizing: border-box; }
+      html { scroll-behavior: smooth; }
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--fg);
+        font-family: var(--sans);
+        line-height: 1.55;
+        -webkit-font-smoothing: antialiased;
+      }
+      h1, h2, h3 {
+        font-family: var(--display);
+        font-weight: 500;
+        letter-spacing: -0.02em;
+        line-height: 1.12;
+      }
+      a { color: inherit; text-decoration: none; }
+      img { max-width: 100%; display: block; }
+      button, .btn { cursor: pointer; font-family: inherit; }
+      .wrap { width: min(72rem, calc(100% - 2rem)); margin-inline: auto; }
+      header.nav {
+        position: sticky; top: 0; z-index: 40;
+        background: color-mix(in srgb, var(--bg) 86%, transparent);
+        backdrop-filter: blur(12px);
+        border-bottom: 1px solid color-mix(in srgb, var(--border) 80%, transparent);
+      }
+      .nav-inner {
+        display: flex; align-items: center; justify-content: space-between;
+        gap: 1rem; height: 4rem;
+      }
+      .brand { display: flex; flex-direction: column; line-height: 1.05; }
+      .brand small { font-family: var(--display); font-style: italic; color: var(--muted); font-size: 0.75rem; }
+      .brand b { font-family: var(--display); font-size: 1.25rem; font-weight: 500; }
+      .links { display: none; gap: 0.25rem; }
+      .links a { padding: 0.5rem 0.75rem; font-size: 0.9rem; color: var(--muted); border-radius: 0.4rem; }
+      .links a:hover, .links a.active { color: var(--fg); }
+      .btn {
+        display: inline-flex; align-items: center; justify-content: center; gap: 0.4rem;
+        border: 0; border-radius: 0.55rem; padding: 0.7rem 1.15rem;
+        font-size: 0.92rem; font-weight: 500;
+      }
+      .btn-accent { background: var(--accent); color: var(--accent-fg); }
+      .btn-cream { background: var(--cream); color: var(--ink); }
+      .btn-outline { background: transparent; color: var(--fg); border: 1px solid var(--border); }
+      .hero { position: relative; min-height: 100svh; display: flex; align-items: flex-end; overflow: hidden; }
+      .hero img.bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+      .hero .overlay {
+        position: absolute; inset: 0;
+        background: linear-gradient(180deg, rgba(18,16,14,.2) 0%, rgba(18,16,14,.4) 45%, rgba(18,16,14,.92) 100%);
+      }
+      .hero-copy { position: relative; z-index: 1; padding: 7rem 0 4rem; }
+      .chip {
+        display: inline-flex; border: 1px solid rgba(241,235,227,.2);
+        background: rgba(18,16,14,.4); border-radius: 999px;
+        padding: 0.3rem 0.8rem; font-size: 0.72rem; letter-spacing: .18em; text-transform: uppercase; color: rgba(241,235,227,.85);
+      }
+      .hero h1 { margin: 1.1rem 0 0; font-size: clamp(2.6rem, 7vw, 4.6rem); font-style: italic; max-width: 16ch; }
+      .hero p { max-width: 36rem; color: rgba(241,235,227,.8); }
+      .cta { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 1.6rem; }
+      .stats { border-block: 1px solid var(--border); background: var(--surface); }
+      .stats-grid { display: grid; grid-template-columns: 1fr 1fr; }
+      .stat { padding: 1.25rem 1.1rem; }
+      .stat b { display: block; }
+      .stat span { color: var(--muted); font-size: 0.88rem; }
+      .section { padding: 4.5rem 0; }
+      .kicker { color: var(--accent); font-size: 0.72rem; letter-spacing: .2em; text-transform: uppercase; font-weight: 500; }
+      .section h2 { font-size: clamp(2rem, 5vw, 3.1rem); font-style: italic; margin: .7rem 0 0; }
+      .cards { display: grid; gap: 1.25rem; margin-top: 2.5rem; }
+      .card { overflow: hidden; border: 1px solid var(--border); background: var(--surface); border-radius: 1rem; }
+      .card img { width: 100%; aspect-ratio: 16/10; object-fit: cover; }
+      .card .pad { padding: 1.1rem 1.15rem 1.25rem; }
+      .badge { display: inline-block; font-size: .7rem; letter-spacing: .08em; text-transform: uppercase; color: var(--accent); }
+      .price { color: var(--muted); font-size: .9rem; }
+      .filters { display: flex; gap: .5rem; overflow-x: auto; padding-bottom: .5rem; }
+      .chip-btn {
+        border: 1px solid var(--border); background: transparent; color: var(--muted);
+        border-radius: 999px; padding: .45rem .9rem; white-space: nowrap;
+      }
+      .chip-btn.on { background: var(--cream); color: var(--ink); border-color: var(--cream); }
+      .menu-item { display: none; }
+      .menu-item.show { display: block; }
+      .reviews { display: grid; gap: 1.1rem; }
+      .quote { border: 1px solid var(--border); background: var(--surface); border-radius: 1rem; padding: 1.3rem; display: flex; flex-direction: column; }
+      .stars { color: var(--accent); letter-spacing: .08em; }
+      .quote p { flex: 1; }
+      .quote footer { border-top: 1px solid var(--border); margin-top: 1.2rem; padding-top: 0.9rem; font-size: .88rem; }
+      .quote footer span { display: block; color: var(--subtle); font-size: .75rem; }
+      .grid-contact { display: grid; gap: 1.1rem; }
+      .info { border: 1px solid var(--border); background: var(--surface); border-radius: 1rem; padding: 1.15rem; }
+      .info a.more { color: var(--accent); font-size: .88rem; }
+      iframe.map { width: 100%; height: 18rem; border: 0; border-radius: 1rem; border: 1px solid var(--border); }
+      form.box { border: 1px solid var(--border); background: var(--surface); border-radius: 1rem; padding: 1.4rem; margin-top: 1.1rem; }
+      label { display: grid; gap: .4rem; font-size: .9rem; color: var(--muted); }
+      input, textarea {
+        background: var(--bg); border: 1px solid var(--border); color: var(--fg);
+        border-radius: .5rem; padding: .7rem .8rem; font: inherit;
+      }
+      .form-grid { display: grid; gap: .9rem; }
+      .ok { background: var(--cream); color: var(--ink); border-radius: .5rem; padding: .8rem 1rem; }
+      footer.site { border-top: 1px solid var(--border); background: var(--surface); padding: 3rem 0 0; }
+      .foot-grid { display: grid; gap: 2rem; }
+      .legal { border-top: 1px solid var(--border); margin-top: 2rem; padding: 1rem 0; color: var(--subtle); font-size: .75rem; display: flex; justify-content: space-between; gap: .5rem; flex-wrap: wrap; }
+      .burger { background: none; border: 0; color: var(--fg); font-size: 1.4rem; }
+      .mobile { display: none; flex-direction: column; padding: 0 0 1rem; }
+      .mobile a { padding: .55rem 0; color: var(--muted); }
+      @media (min-width: 720px) {
+        .links { display: flex; }
+        .burger { display: none; }
+        .stats-grid { grid-template-columns: repeat(4, 1fr); }
+        .cards, .reviews { grid-template-columns: 1fr 1fr; }
+        .form-grid { grid-template-columns: 1fr 1fr; }
+        .foot-grid { grid-template-columns: 1.3fr 1fr 1fr; }
+      }
+      @media (min-width: 960px) {
+        .reviews { grid-template-columns: repeat(3, 1fr); }
+        .grid-contact { grid-template-columns: .8fr 1.4fr; }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="nav">
+      <div class="wrap nav-inner">
+        <a class="brand" href="#accueil">
+          <small>Grillades afghanes</small>
+          <b>Ariana Grill</b>
+        </a>
+        <nav class="links">
+          <a href="#accueil">Accueil</a>
+          <a href="#carte">La carte</a>
+          <a href="#avis">Avis</a>
+          <a href="#reserver">Réserver</a>
+        </nav>
+        <div style="display:flex;gap:.5rem;align-items:center">
+          <a class="btn btn-accent" href="tel:+33686945456">Appeler</a>
+          <button class="burger" type="button" aria-label="Menu" id="burger">☰</button>
+        </div>
+      </div>
+      <nav class="mobile wrap" id="mobile">
+        <a href="#accueil">Accueil</a>
+        <a href="#carte">La carte</a>
+        <a href="#avis">Avis</a>
+        <a href="#reserver">Réserver</a>
+      </nav>
+    </header>
+
+    <section class="hero" id="accueil">
+      <img class="bg" src="public/images/hero.jpg" alt="Platter de grillades afghanes, riz et naan" />
+      <div class="overlay"></div>
+      <div class="wrap hero-copy">
+        <div style="display:flex;flex-wrap:wrap;gap:.6rem">
+          <span class="chip">Centre commercial du Pont de Pierre</span>
+          <span class="chip" id="openChip">11h – 23h30</span>
+        </div>
+        <h1>Le feu, les épices, la table.</h1>
+        <p>Restaurant afghan au Pont de Pierre. Kebabs au charbon, karhai, qabli palaw — 4,4/5 sur 631 avis Google.</p>
+        <div class="cta">
+          <a class="btn btn-accent" href="#carte">Voir la carte</a>
+          <a class="btn btn-cream" href="tel:+33686945456">Réserver · 06 86 94 54 56</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="stats">
+      <div class="wrap stats-grid">
+        <div class="stat"><b>4,4 / 5</b><span>631 avis Google</span></div>
+        <div class="stat"><b>11h – 23h30</b><span>Lun–mar jusqu’à 23h</span></div>
+        <div class="stat"><b>Garges-lès-Gonesse</b><span>En face de Brico Dépôt</span></div>
+        <div class="stat"><b>06 86 94 54 56</b><span>10 – 20 € / personne</span></div>
+      </div>
+    </section>
+
+    <section class="section" id="table">
+      <div class="wrap">
+        <p class="kicker">La table</p>
+        <h2>Ce que l’on vient chercher.</h2>
+        <div class="cards">
+          <article class="card">
+            <img src="public/images/grill.jpg" alt="Assiette kebab" />
+            <div class="pad">
+              <span class="badge">Signature</span>
+              <h3>Assiette kebab</h3>
+              <p>Viande de veau et de dinde grillée au charbon, assiette généreuse.</p>
+              <p class="price">18,50 €</p>
+            </div>
+          </article>
+          <article class="card">
+            <img src="public/images/palaw.jpg" alt="Qabli palaw" />
+            <div class="pad">
+              <span class="badge">Incontournable</span>
+              <h3>Qabli palaw</h3>
+              <p>Le riz de fête afghan : carottes glacées, raisins secs, amandes, viande mijotée.</p>
+            </div>
+          </article>
+          <article class="card">
+            <img src="public/images/karhai.jpg" alt="Karhai" />
+            <div class="pad">
+              <h3>Karhai</h3>
+              <p>Viande mijotée au wok, sauce tomate, gingembre, piment.</p>
+            </div>
+          </article>
+          <article class="card">
+            <img src="public/images/tikka.jpg" alt="Assiette poulet" />
+            <div class="pad">
+              <h3>Assiette poulet</h3>
+              <p>Poulet mariné au curry, grillé, servi en assiette.</p>
+              <p class="price">18,50 €</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="carte" style="padding-top:2rem">
+      <div class="wrap">
+        <p class="kicker">Carte</p>
+        <h2>Grillades, karhai, palaw.</h2>
+        <p style="color:var(--muted);max-width:36rem">Les assiettes grillades à 18,50 € sont celles de la carte livraison. Karhai, palaw et naans se confirment à table — 10 – 20 € par personne.</p>
+        <div class="filters" style="margin-top:1.5rem">
+          <button class="chip-btn on" data-filter="all" type="button">Toute la carte</button>
+          <button class="chip-btn" data-filter="grillades" type="button">Grillades</button>
+          <button class="chip-btn" data-filter="specialites" type="button">Spécialités</button>
+          <button class="chip-btn" data-filter="pains" type="button">Pains & riz</button>
+          <button class="chip-btn" data-filter="boissons" type="button">Boissons</button>
+        </div>
+        <div class="cards" id="menu">
+          <article class="card menu-item show" data-cat="grillades">
+            <img src="public/images/grill.jpg" alt="Assiette kebab" />
+            <div class="pad"><span class="badge">Signature</span><h3>Assiette kebab</h3><p>Veau et dinde grillés au charbon.</p><p class="price">18,50 €</p></div>
+          </article>
+          <article class="card menu-item show" data-cat="grillades">
+            <img src="public/images/tikka.jpg" alt="Assiette poulet" />
+            <div class="pad"><h3>Assiette poulet</h3><p>Poulet mariné au curry, grillé.</p><p class="price">18,50 €</p></div>
+          </article>
+          <article class="card menu-item show" data-cat="grillades">
+            <img src="public/images/hero.jpg" alt="Brochettes de poulet" />
+            <div class="pad"><h3>Brochettes de poulet</h3><p>Poulet grillé en brochettes, cuit sur le charbon.</p><p class="price">18,50 €</p></div>
+          </article>
+          <article class="card menu-item show" data-cat="grillades">
+            <img src="public/images/hero.jpg" alt="Platter BBQ" />
+            <div class="pad"><span class="badge">À partager</span><h3>Platter BBQ</h3><p>Kebabs, tikka, tomates grillées, riz et naan.</p></div>
+          </article>
+          <article class="card menu-item show" data-cat="specialites">
+            <img src="public/images/palaw.jpg" alt="Qabli palaw" />
+            <div class="pad"><span class="badge">Incontournable</span><h3>Qabli palaw</h3><p>Riz de fête, carottes, raisins, amandes.</p></div>
+          </article>
+          <article class="card menu-item show" data-cat="specialites">
+            <img src="public/images/karhai.jpg" alt="Karhai" />
+            <div class="pad"><h3>Karhai</h3><p>Wok tomate, gingembre, piment.</p></div>
+          </article>
+          <article class="card menu-item show" data-cat="pains">
+            <img src="public/images/naan.jpg" alt="Naan maison" />
+            <div class="pad"><h3>Naan maison</h3><p>Pain cuit au four, nature ou au fromage.</p></div>
+          </article>
+          <article class="card menu-item show" data-cat="pains">
+            <div class="pad"><h3>Riz parfumé</h3><p>Riz long grain, beurre et épices douces.</p></div>
+          </article>
+          <article class="card menu-item show" data-cat="boissons">
+            <div class="pad"><h3>Lassi à la mangue</h3><p>Yaourt battu, mangue, glace pilée.</p></div>
+          </article>
+          <article class="card menu-item show" data-cat="boissons">
+            <div class="pad"><h3>Thé afghan</h3><p>Souvent offert en fin de repas.</p></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="avis">
+      <div class="wrap">
+        <p class="kicker">Google</p>
+        <h2>4,4 / 5</h2>
+        <p style="color:var(--muted);max-width:36rem">631 avis. Les clients parlent des grillades, du karhai, du palaw, et de l’accueil.</p>
+        <div class="reviews" style="margin-top:2.2rem">
+          <blockquote class="quote">
+            <div class="stars">★★★★★</div>
+            <p>“Une adresse à ne pas manquer si vous êtes près de Paris. Situé à environ 30 kilomètres de la capitale — cuisine généreuse, accueil soigné.”</p>
+            <footer>Daniyal Malik<span>Avis Google · il y a 3 semaines · Visité en août</span></footer>
+          </blockquote>
+          <blockquote class="quote">
+            <div class="stars">★★★★★</div>
+            <p>“Un excellent restaurant afghan, très bien desservi. Les grillades et l’accueil valent le détour.”</p>
+            <footer>Hakim<span>Avis Google · il y a 10 mois · Visité en octobre 2025</span></footer>
+          </blockquote>
+          <blockquote class="quote">
+            <div class="stars">★★★★★</div>
+            <p>“Les viandes grillées étaient parfaitement cuites — juteuses, savoureuses. Le chicken tikka remarquable. Je reviendrai sans hésiter.”</p>
+            <footer>Avis Google<span>dîner</span></footer>
+          </blockquote>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="reserver">
+      <div class="wrap">
+        <p class="kicker">Contact</p>
+        <h2>Une table au Pont de Pierre.</h2>
+        <p style="color:var(--muted);max-width:36rem">Appelez pour réserver, passez sans attendre, ou commandez en livraison. Durée moyenne sur place : 45 min à 1 h 30.</p>
+        <div class="grid-contact" style="margin-top:2rem">
+          <div>
+            <div class="info">
+              <h3>Téléphone</h3>
+              <p>06 86 94 54 56</p>
+              <a class="more" href="tel:+33686945456">Appeler maintenant</a>
+            </div>
+            <div class="info" style="margin-top:1rem">
+              <h3>Adresse</h3>
+              <p>Centre Commercial du Pont de Pierre, Av. de Stalingrad, 95140 Garges-lès-Gonesse. En face de Brico Dépôt.</p>
+              <a class="more" href="https://www.google.com/maps/dir/?api=1&destination=Ariana%20Grill%20Avenue%20de%20Stalingrad%2095140%20Garges-l%C3%A8s-Gonesse" target="_blank" rel="noreferrer">Ouvrir l’itinéraire</a>
+            </div>
+            <div class="info" style="margin-top:1rem">
+              <h3>Horaires</h3>
+              <p>Lundi – Mardi · 11:00 – 23:00</p>
+              <p>Mercredi – Dimanche · 11:00 – 23:30</p>
+            </div>
+            <div class="info" style="margin-top:1rem">
+              <h3>Livraison</h3>
+              <a class="more" href="https://deliveroo.fr/fr/menu/paris/arnouville/ariana-grill-avenue-de-stalingrad" target="_blank" rel="noreferrer">Ouvrir Deliveroo</a>
+            </div>
+          </div>
+          <div>
+            <iframe class="map" title="Carte Ariana Grill" loading="lazy" src="https://maps.google.com/maps?q=Ariana%20Grill%20Avenue%20de%20Stalingrad%2095140%20Garges-l%C3%A8s-Gonesse&hl=fr&z=16&output=embed"></iframe>
+            <form class="box" id="form">
+              <h3 style="font-family:var(--display);font-style:italic;font-size:1.6rem;margin:0">Demande de réservation</h3>
+              <p style="color:var(--muted);font-size:.9rem">On vous confirme par téléphone.</p>
+              <div id="ok" class="ok" hidden>Demande enregistrée. Appelez-nous au 06 86 94 54 56 pour confirmer la table.</div>
+              <div class="form-grid">
+                <label>Nom <input name="name" required autocomplete="name" /></label>
+                <label>Téléphone <input name="phone" type="tel" required autocomplete="tel" /></label>
+                <label>Convives <input name="covers" type="number" min="1" max="20" value="2" required /></label>
+                <label>Date et heure <input name="datetime" type="datetime-local" required /></label>
+              </div>
+              <label style="margin-top:.9rem">Message (optionnel) <textarea name="message" rows="3"></textarea></label>
+              <button class="btn btn-accent" type="submit" style="margin-top:1rem">Envoyer la demande</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="site">
+      <div class="wrap foot-grid">
+        <div>
+          <p style="font-family:var(--display);font-style:italic;font-size:2rem;margin:0">Ariana Grill</p>
+          <p style="color:var(--muted);max-width:20rem">Cuisine afghane et grillades au charbon, au centre commercial du Pont de Pierre.</p>
+        </div>
+        <div>
+          <p class="kicker">Venir</p>
+          <p>Av. de Stalingrad, 95140 Garges-lès-Gonesse</p>
+          <a href="tel:+33686945456">06 86 94 54 56</a>
+        </div>
+        <div>
+          <p class="kicker">Explorer</p>
+          <p><a href="#carte">La carte</a></p>
+          <p><a href="#avis">Avis</a></p>
+          <p><a href="#reserver">Réserver</a></p>
+        </div>
+      </div>
+      <div class="wrap legal">
+        <span>© 2026 Ariana Grill</span>
+        <span>Restaurant afghan · Garges-lès-Gonesse</span>
+      </div>
+    </footer>
+
+    <script>
+      const burger = document.getElementById("burger");
+      const mobile = document.getElementById("mobile");
+      burger.addEventListener("click", () => {
+        mobile.style.display = mobile.style.display === "flex" ? "none" : "flex";
+      });
+      mobile.querySelectorAll("a").forEach((a) => a.addEventListener("click", () => { mobile.style.display = "none"; }));
+
+      document.querySelectorAll("[data-filter]").forEach((btn) => {
+        btn.addEventListener("click", () => {
+          document.querySelectorAll("[data-filter]").forEach((b) => b.classList.remove("on"));
+          btn.classList.add("on");
+          const f = btn.dataset.filter;
+          document.querySelectorAll(".menu-item").forEach((item) => {
+            item.classList.toggle("show", f === "all" || item.dataset.cat === f);
+          });
+        });
+      });
+
+      document.getElementById("form").addEventListener("submit", (e) => {
+        e.preventDefault();
+        document.getElementById("ok").hidden = false;
+        e.currentTarget.reset();
+      });
+
+      (function setOpen() {
+        const d = new Date();
+        const day = d.getDay();
+        const minutes = d.getHours() * 60 + d.getMinutes();
+        const close = day === 1 || day === 2 ? 23 * 60 : 23 * 60 + 30;
+        const open = minutes >= 11 * 60 && minutes < close;
+        document.getElementById("openChip").textContent = open
+          ? (day === 1 || day === 2 ? "Ouvert · 11:00 – 23:00" : "Ouvert · 11:00 – 23:30")
+          : "Fermé · ouvre à 11h";
+      })();
+    </script>
+  </body>
+</html>
