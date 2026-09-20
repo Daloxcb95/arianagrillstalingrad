@@ -1,0 +1,96 @@
+@import "tailwindcss";
+
+@theme {
+  --color-bg: #12100e;
+  --color-surface: #1b1814;
+  --color-surface-2: #24201b;
+  --color-fg: #f1ebe3;
+  --color-muted: #b4a89a;
+  --color-subtle: #7d7468;
+  --color-accent: #c24a2e;
+  --color-accent-fg: #fff6f1;
+  --color-cream: #f1ebe3;
+  --color-ink: #12100e;
+  --color-border: #322c26;
+  --font-sans: "Outfit", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Cormorant Garamond", ui-serif, Georgia, "Times New Roman", serif;
+  --radius-xs: 0.25rem;
+  --radius-sm: 0.5rem;
+  --radius-md: 0.75rem;
+  --radius-lg: 1rem;
+  --radius-xl: 1.5rem;
+  --radius-2xl: 2rem;
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-smooth-out: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@layer base {
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  html,
+  body,
+  #app {
+    min-height: 100%;
+    background: var(--color-bg);
+    color: var(--color-fg);
+  }
+
+  body {
+    font-family: var(--font-sans);
+    line-height: 1.55;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    font-weight: 500;
+    letter-spacing: -0.02em;
+    line-height: 1.12;
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+
+  ::selection {
+    background: var(--color-accent);
+    color: var(--color-accent-fg);
+  }
+}
+
+@layer utilities {
+  .hero-overlay {
+    background: linear-gradient(
+      180deg,
+      color-mix(in oklab, var(--color-bg) 20%, transparent) 0%,
+      color-mix(in oklab, var(--color-bg) 40%, transparent) 45%,
+      color-mix(in oklab, var(--color-bg) 92%, transparent) 100%
+    );
+  }
+
+  .scrim {
+    background: color-mix(in oklab, var(--color-bg) 72%, transparent);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
